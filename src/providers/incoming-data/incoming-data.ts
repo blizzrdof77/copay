@@ -118,6 +118,13 @@ export class IncomingDataProvider {
     );
   }
 
+  private isValidSpendabitUri(data: string): boolean {
+    data = this.sanitizeUri(data);
+    return !!(
+      data && data.indexOf(this.appProvider.info.name + '://spendabit') === 0
+    );
+  }
+
   private isValidBitPayCardUri(data: string): boolean {
     data = this.sanitizeUri(data);
     return !!(data && data.indexOf('bitpay://bitpay') === 0);

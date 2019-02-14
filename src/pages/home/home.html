@@ -297,7 +297,10 @@
 
       <gift-cards *ngIf="showGiftCards && wallets && wallets[0]"></gift-cards>
 
+      <product-search *ngIf="showProductSearch && wallets && wallets[0]"></product-search>
+
       <div class="card" *ngIf="homeIntegrations && homeIntegrations.length > 0 && wallets && wallets[0]">
+      <!-- <div class="card"> -->
         <ion-item-divider (click)="hideHomeIntegrations = !hideHomeIntegrations">
           <div class="title" item-start translate>Services</div>
           <div item-end>

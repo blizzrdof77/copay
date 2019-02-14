@@ -10,6 +10,7 @@ import { AddPage } from '../add/add';
 import { BitPayCardPage } from '../integrations/bitpay-card/bitpay-card';
 import { BitPayCardIntroPage } from '../integrations/bitpay-card/bitpay-card-intro/bitpay-card-intro';
 import { CoinbasePage } from '../integrations/coinbase/coinbase';
+import { ProductSearchPage } from '../integrations/product-search/product-search';
 import { ShapeshiftPage } from '../integrations/shapeshift/shapeshift';
 import { PaperWalletPage } from '../paper-wallet/paper-wallet';
 import { AmountPage } from '../send/amount/amount';
@@ -67,6 +68,7 @@ export class HomePage {
   public showIntegration;
   public hideHomeIntegrations: boolean;
   public showGiftCards: boolean;
+  public showProductSearch: boolean;
   public showBitpayCardGetStarted: boolean;
   public accessDenied: boolean;
 
@@ -143,6 +145,8 @@ export class HomePage {
     this.showGiftCards = this.homeIntegrationsProvider.shouldShowInHome(
       'giftcards'
     );
+
+    this.showProductSearch = true;
 
     this.showBitpayCardGetStarted = this.homeIntegrationsProvider.shouldShowInHome(
       'debitcard'
@@ -668,7 +672,8 @@ export class HomePage {
     const pageMap = {
       BitPayCardIntroPage,
       CoinbasePage,
-      ShapeshiftPage
+      ShapeshiftPage,
+      ProductSearchPage
     };
     this.navCtrl.push(pageMap[page]);
   }

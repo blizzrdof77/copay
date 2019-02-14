@@ -68,6 +68,7 @@ export interface Config {
     mercadolibre: boolean;
     shapeshift: boolean;
     giftcards: boolean;
+    productsearch: boolean;
   };
 
   pushNotificationsEnabled: boolean;
@@ -181,7 +182,8 @@ export class ConfigProvider {
         amazon: true,
         mercadolibre: true,
         shapeshift: true,
-        giftcards: true
+        giftcards: true,
+        productsearch: true
       },
 
       pushNotificationsEnabled: true,
@@ -286,6 +288,8 @@ export class ConfigProvider {
     } else {
       if (this.configCache.showIntegration.giftcards !== false) {
         this.configCache.showIntegration.giftcards = this.configDefault.showIntegration.giftcards;
+      } else if (this.configCache.showIntegration.productsearch !== false) {
+        this.configCache.showIntegration.productsearch = this.configDefault.showIntegration.productsearch;
       }
     }
     if (!this.configCache.pushNotificationsEnabled) {

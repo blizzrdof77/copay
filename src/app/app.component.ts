@@ -25,6 +25,7 @@ import { IncomingDataProvider } from '../providers/incoming-data/incoming-data';
 import { Logger } from '../providers/logger/logger';
 import { PlatformProvider } from '../providers/platform/platform';
 import { PopupProvider } from '../providers/popup/popup';
+import { ProductSearchProvider } from '../providers/product-search/product-search';
 import { ProfileProvider } from '../providers/profile/profile';
 import { PushNotificationsProvider } from '../providers/push-notifications/push-notifications';
 import { ShapeshiftProvider } from '../providers/shapeshift/shapeshift';
@@ -37,6 +38,7 @@ import { JoinWalletPage } from '../pages/add/join-wallet/join-wallet';
 import { FingerprintModalPage } from '../pages/fingerprint/fingerprint';
 import { BitPayCardIntroPage } from '../pages/integrations/bitpay-card/bitpay-card-intro/bitpay-card-intro';
 import { CoinbasePage } from '../pages/integrations/coinbase/coinbase';
+import { ProductSearchPage } from '../pages/integrations/product-search/product-search';
 import { ShapeshiftPage } from '../pages/integrations/shapeshift/shapeshift';
 import { DisclaimerPage } from '../pages/onboarding/disclaimer/disclaimer';
 import { OnboardingPage } from '../pages/onboarding/onboarding';
@@ -84,6 +86,7 @@ export class CopayApp {
     ImportWalletPage,
     JoinWalletPage,
     PaperWalletPage,
+    ProductSearchPage,
     ShapeshiftPage,
     WalletDetailsPage
   };
@@ -104,6 +107,7 @@ export class CopayApp {
     private coinbaseProvider: CoinbaseProvider,
     private bitPayCardProvider: BitPayCardProvider,
     private shapeshiftProvider: ShapeshiftProvider,
+    private productSearchProvider: ProductSearchProvider,
     private emailNotificationsProvider: EmailNotificationsProvider,
     private screenOrientation: ScreenOrientation,
     private popupProvider: PopupProvider,
@@ -291,6 +295,11 @@ export class CopayApp {
     if (this.appProvider.info._enabledExtensions.shapeshift) {
       this.shapeshiftProvider.setCredentials();
       this.shapeshiftProvider.register();
+    }
+
+    // Product Search
+    if (this.appProvider.info._enabledExtensions.productsearch) {
+      this.productSearchProvider.register();
     }
 
     // Coinbase
