@@ -45,6 +45,10 @@ import { BitPayCardIntroPage } from '../pages/integrations/bitpay-card/bitpay-ca
 import { BitPayCardTopUpPage } from '../pages/integrations/bitpay-card/bitpay-card-topup/bitpay-card-topup';
 import { BitPaySettingsPage } from '../pages/integrations/bitpay-card/bitpay-settings/bitpay-settings';
 
+// Integrations: Product Search (Spendabit)
+import { ProductSearchPage } from '../pages/integrations/product-search/product-search';
+import { ProductSearchResultsPage } from '../pages/integrations/product-search/product-search-results/product-search-results';
+
 /*Includes */
 import { CardItemPage } from '../pages/includes/card-item/card-item';
 import { FeedbackCardPage } from '../pages/includes/feedback-card/feedback-card';

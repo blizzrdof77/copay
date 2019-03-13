@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Product Search</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-bounce>
+  <div class="container">
+    <div class="center-header">
+      <img src="assets/img/product-search/product-search-icon.svg" width="200" alt="Spendabit">
+      <div padding>
+        <h4 translate>Buy the things you need with Bitcoin.</h4>
+        <p translate>Find products from hundreds of stores that accept Bitcoin purchases.</p>
+      </div>
+
+      <button ion-button clear small color="light" (click)="openExternalLink('https://spendabit.co')">
+        {{'Visit spendabit.co' | translate}} &rarr;
+      </button>
+      <div *ngIf="error">
+        <span ion-text color="danger">{{error}}</span>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar *ngIf="shifts.data">
+    <div class="shift-problems">
+      <span translate>Having trouble using the product search?</span>
+      <br>
+      <a (click)="openExternalLink('https://spendabit.co/feedback?subject=bitpay')" translate>
+        Contact Spendabit and let them know.
+      </a>
+    </div>
+  </ion-toolbar>
+</ion-footer>

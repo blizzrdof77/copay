@@ -403,6 +403,7 @@ describe('Provider: Incoming Data Provider', () => {
         });
       });
     });
+    /* TODO: Add Spendabit should handle URI test */
     it('Should handle Coinbase URI', () => {
       let data = ['bitpay://coinbase', 'copay://coinbase'];
       data.forEach(element => {
