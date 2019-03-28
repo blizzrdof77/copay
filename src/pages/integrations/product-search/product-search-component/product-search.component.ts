@@ -1,36 +1,38 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import * as _ from 'lodash';
-import { Logger } from '../../providers/logger/logger';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { AppProvider } from '../../../../providers/app/app';
+// import { IonicFormInput, IonicModule } from 'ionic-angular';
+import { ConfigProvider } from '../../../../providers/config/config';
+import { Logger } from '../../../../providers/logger/logger';
+import { ProductSearchProvider } from './../../../../providers/product-search/product-search';
 
-// providers
-import { AppProvider } from '../app/app';
-import { ConfigProvider } from '../config/config';
-import { HomeIntegrationsProvider } from '../home-integrations/home-integrations';
-import { PersistenceProvider } from '../persistence/persistence';
-
-@Injectable()
-export class ProductSearchProvider {
+@Component({
+  selector: 'app-product-search',
+  templateUrl: './product-search.component.html',
+  styleUrls: ['./product-search.component.scss']
+})
+export class ProductSearchComponent {
   private credentials;
 
   constructor(
     private appProvider: AppProvider,
-    private homeIntegrationsProvider: HomeIntegrationsProvider,
+    private productSearchProvider: ProductSearchProvider,
     private http: HttpClient,
     private logger: Logger,
-    private configProvider: ConfigProvider
-  ) // private persistenceProvider: PersistenceProvider
-  {
+    private configProvider: ConfigProvider // private persistenceProvider: PersistenceProvider
+  ) {
     this.logger.debug('Product Search module initialized');
   }
 
   public register(): void {
-    this.homeIntegrationsProvider.register({
+    this.productSearchProvider.register({
       name: 'productsearch',
       title: 'ProductSearch',
       icon: 'assets/img/product-search/product-search-icon.svg',
       page: 'ProductSearchPage',
-      show: !!this.configProvider.get().showIntegration['productsearch']
+      show: true
+      // XXX: Need to do this properly before merging
+      // show: !!this.configProvider.get().showIntegration['productsearch']
     });
   }
 
@@ -58,7 +60,7 @@ export class ProductSearchProvider {
         return cb(null, data);
       },
       data => {
-        const error = this.parseError(data);
+        // const error = this.parseError(data);
         this.logger.error('Search product ERROR: ' + error);
         return cb(error);
       }
